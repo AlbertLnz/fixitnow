@@ -1,4 +1,6 @@
-export const js_exercises = [
+import { Exercise } from '@/types'
+
+export const javascript_exercises: Exercise[] = [
   {
     id: 1,
     question:
@@ -388,5 +390,45 @@ export const js_exercises = [
     question:
       '// fix the errors. Answer desired: true\nconst isObject = (val) => val !== null && typeof val === "object";\n\nconsole.log(isObject({}))',
     answer: 'true',
+  },
+]
+
+export const typescript_exercises: Exercise[] = [
+  {
+    id: 1,
+    question: 'EXERCISE TYPESCRIPT Nº1',
+    answer: '439',
+  },
+]
+
+export const html_exercises: Exercise[] = [
+  {
+    id: 1,
+    question: 'EXERCISE HTML Nº1',
+    answer: '439',
+  },
+]
+
+export const java_exercises: Exercise[] = [
+  {
+    id: 1,
+    question: 'EXERCISE JAVA Nº1',
+    answer: '439',
+  },
+]
+
+export const angular_exercises: Exercise[] = [
+  {
+    id: 1,
+    question: 'EXERCISE ANGULAR Nº1',
+    answer: '439',
+  },
+]
+
+export const php_exercises: Exercise[] = [
+  {
+    id: 1,
+    question: 'EXERCISE PHP Nº1',
+    answer: '439',
   },
 ]

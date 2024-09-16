@@ -1,18 +1,21 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Editor } from '@monaco-editor/react'
 import * as monaco from 'monaco-editor'
 import Output from './Output'
-import { js_exercises } from '@/data/js_exercises'
+import { useLanguageStore } from '@/store/store'
+import { Exercise } from '@/types'
 
 type Props = {
   classname: string
 }
 
-const language = 'javascript'
+// const language = 'javascript'
 
 const CodeEditor = ({ classname }: Props) => {
+  const languageStore = useLanguageStore((state) => state.language)
+  const [exercises, setExercises] = useState<Exercise[]>([])
   const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null)
   const [questionNum, setQuestionNum] = useState<number>(0)
 
@@ -23,15 +26,29 @@ const CodeEditor = ({ classname }: Props) => {
 
   const prevQuestion = () => {
     questionNum === 0
-      ? setQuestionNum(js_exercises.length - 1)
+      ? setQuestionNum(exercises.length - 1)
       : setQuestionNum((prev) => prev - 1)
   }
 
   const nextQuestion = () => {
-    questionNum === js_exercises.length - 1
+    questionNum === exercises.length - 1
       ? setQuestionNum(0)
       : setQuestionNum((prev) => prev + 1)
   }
+
+  useEffect(() => {
+    const loadExercises = async () => {
+      const file = await import('@/data/exercises')
+      const exercisesKey =
+        `${languageStore.name.toLowerCase()}_exercises` as keyof typeof file
+
+      if (file[exercisesKey]) {
+        setExercises(file[exercisesKey])
+      }
+    }
+
+    loadExercises()
+  }, [languageStore])
 
   return (
     <div className='grid grid-cols-2 w-full'>
@@ -67,14 +84,15 @@ const CodeEditor = ({ classname }: Props) => {
         }}
         height='25vh'
         theme='vs-dark'
-        language={language}
-        value={js_exercises[questionNum].question}
+        language={languageStore.name}
+        value={exercises[questionNum]?.question || ''}
         onMount={onMount}
         // onChange={(value) => setValue(value)}
       />
       <Output
         editorRef={editorRef}
-        language={language}
+        language={languageStore.name}
+        exercises={exercises}
         questionNum={questionNum}
       />
     </div>

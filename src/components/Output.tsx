@@ -1,15 +1,16 @@
 import { MutableRefObject, useState } from 'react'
 import * as monaco from 'monaco-editor'
 import { executeCode } from '../lib/api_axios' // using 'axios' instead of 'fetch' bcs 'fetch' doesn't work
-import { js_exercises } from '@/data/js_exercises'
+import { Exercise } from '@/types'
 
 type Props = {
   editorRef: MutableRefObject<monaco.editor.IStandaloneCodeEditor | null>
   language: string
+  exercises: Exercise[]
   questionNum: number
 }
 
-const Output = ({ editorRef, language, questionNum }: Props) => {
+const Output = ({ editorRef, language, exercises, questionNum }: Props) => {
   const [output, setOutput] = useState<string[]>([])
   const [outputStyles, setOutputStyles] = useState('')
 
@@ -22,7 +23,7 @@ const Output = ({ editorRef, language, questionNum }: Props) => {
         const result = await executeCode({ language, sourceCode })
         const answer = result.run.output.split('\n')
 
-        if (answer[0] === js_exercises[questionNum].answer) {
+        if (answer[0] === exercises[questionNum].answer) {
           setOutputStyles('text-green-600')
           setOutput(['Correct!'])
         } else {

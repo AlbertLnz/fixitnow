@@ -9,7 +9,9 @@ const config: Config = {
     './src/icons/**/*.{js,ts,jsx,tsx,mdx}',
     './src/lib/**/*.{js,ts,jsx,tsx,mdx}',
     './src/sections/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/store/**/*.{js,ts,jsx,tsx,mdx}',
     './src/styles/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/types.d.ts',
   ],
   theme: {
     extend: {

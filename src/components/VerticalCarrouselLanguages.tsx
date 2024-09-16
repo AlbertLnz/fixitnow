@@ -1,17 +1,25 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { icons } from '@/data/languages'
+import { useLanguageStore } from '@/store/store'
+import { Languages } from '@/types'
 
 const VerticalCarrouselLanguages = () => {
   const [curr, setCurr] = useState(0)
+  const changeLanguage = useLanguageStore((state) => state.setTechs)
 
   const prev = () =>
     setCurr((curr) => (curr === 0 ? icons.length - 1 : curr - 1))
   const next = () =>
     setCurr((curr) => (curr === icons.length - 1 ? 0 : curr + 1))
 
-  // console.log(icons[curr].name)
+  useEffect(() => {
+    const name = icons[curr].name as Languages
+    const version = icons[curr].version
+
+    changeLanguage({ name, version })
+  }, [curr, changeLanguage])
 
   return (
     <div className='relative'>
