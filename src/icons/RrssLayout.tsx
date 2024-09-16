@@ -3,6 +3,7 @@ import '../styles/Rrss.css'
 const RrssLayout = () => {
   return (
     <svg
+      id='rrss-layout'
       xmlns='http://www.w3.org/2000/svg'
       width='299'
       height='75'

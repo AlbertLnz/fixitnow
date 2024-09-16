@@ -1,17 +1,17 @@
-path {
+#rrss-layout > path {
   fill: #2b813c;
   fill-opacity: 0.15;
   stroke: #2b813c;
 }
 
-svg path:nth-of-type(1):hover {
+#rrss-layout path:nth-of-type(1):hover {
   fill: red;
 }
 
-svg path:nth-of-type(2):hover {
+#rrss-layout path:nth-of-type(2):hover {
   fill: red;
 }
 
-svg path:nth-of-type(3):hover {
+#rrss-layout path:nth-of-type(3):hover {
   fill: red;
 }
