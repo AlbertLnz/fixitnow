@@ -6,9 +6,10 @@ import { js_exercises } from '@/data/js_exercises'
 type Props = {
   editorRef: MutableRefObject<monaco.editor.IStandaloneCodeEditor | null>
   language: string
+  questionNum: number
 }
 
-const Output = ({ editorRef, language }: Props) => {
+const Output = ({ editorRef, language, questionNum }: Props) => {
   const [output, setOutput] = useState<string[]>([])
   const [outputStyles, setOutputStyles] = useState('')
 
@@ -21,7 +22,7 @@ const Output = ({ editorRef, language }: Props) => {
         const result = await executeCode({ language, sourceCode })
         const answer = result.run.output.split('\n')
 
-        if (answer[0] === js_exercises[0].answer) {
+        if (answer[0] === js_exercises[questionNum].answer) {
           setOutputStyles('text-green-600')
           setOutput(['Correct!'])
         } else {
