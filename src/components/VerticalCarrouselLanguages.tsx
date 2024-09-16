@@ -15,10 +15,10 @@ const VerticalCarrouselLanguages = () => {
 
   return (
     <div className='relative'>
-      <div className='overflow-hidden w-fit'>
+      <div className='overflow-hidden w-fit h-[calc(9rem+1rem)]'>
         <div
-          className='flex flex-col transition-transform ease-out duration-500 h-36 w-fit'
-          style={{ transform: `translateY(-${curr * 100}%)` }}
+          className='flex flex-col gap-y-4 transition-transform ease-out duration-500 w-fit'
+          style={{ transform: `translateY(-${curr * (9 + 1)}rem)` }}
         >
           {icons.map(({ name, component: Icon }) => (
             <div
