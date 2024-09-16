@@ -11,8 +11,6 @@ type Props = {
   classname: string
 }
 
-// const language = 'javascript'
-
 const CodeEditor = ({ classname }: Props) => {
   const languageStore = useLanguageStore((state) => state.language)
   const [exercises, setExercises] = useState<Exercise[]>([])
@@ -48,6 +46,7 @@ const CodeEditor = ({ classname }: Props) => {
     }
 
     loadExercises()
+    setQuestionNum(0)
   }, [languageStore])
 
   return (
