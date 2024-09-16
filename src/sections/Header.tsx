@@ -9,7 +9,9 @@ const Header = () => {
         <RrssLayout />
       </div>
 
-      <h1 className='text-9xl text-center'>{'<FixItNow />'}</h1>
+      <h1 className='text-9xl text-center custom-wavy-underline'>
+        {'<FixItNow />'}
+      </h1>
 
       <div className='justify-self-end'>
         <Image
