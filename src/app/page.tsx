@@ -14,8 +14,7 @@ export default function Home() {
           <VerticalCarrouselLanguages />
         </div>
         <div className='flex w-full space-x-4 mx-4'>
-          <CodeEditor classname='w-full h-full' />
-          <CodeEditor classname='w-full h-full' />
+          <CodeEditor classname='h-full' />
         </div>
       </div>
     </>

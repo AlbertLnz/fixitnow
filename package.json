@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
+    "axios": "^1.7.7",
     "i": "^0.3.7",
     "next": "14.2.11",
     "npm": "^10.8.3",
