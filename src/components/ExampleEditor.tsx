@@ -1,6 +1,7 @@
 'use client'
 
 import { themes } from '@/data/themes'
+import { fonts } from '@/data/fonts'
 import { Editor } from '@monaco-editor/react'
 import * as monaco from 'monaco-editor'
 import { useMonacoEditorStore } from '@/store/store'
@@ -22,12 +23,11 @@ const ExampleEditor = ({ settingSelected }: Props) => {
   })
 
   const handleEditorDidMount = (monacoInstance: typeof monaco) => {
-    if (!runSetting.arr_selected) return
+    if (settingSelected !== 'sett-theme-color') return
 
     const theme_object = themes.find(
       (theme) => theme.name === runSetting.arr_selected
     )
-
     monacoInstance.editor.defineTheme(runSetting.arr_selected, {
       ...theme_object?.theme_json,
     })
@@ -71,6 +71,13 @@ const ExampleEditor = ({ settingSelected }: Props) => {
         arr_selected: themes[0].name,
       })
     }
+
+    if (settingSelected === 'sett-theme-font') {
+      setRunSetting({
+        arr: fonts.map((font) => font.name),
+        arr_selected: fonts[0].name,
+      })
+    }
   }, [settingSelected])
 
   return (
@@ -87,6 +94,18 @@ const ExampleEditor = ({ settingSelected }: Props) => {
             className={`w-[100px]`}
             loading={'LOADING...'}
             language='javascript'
+            options={{
+              fontFamily: `${
+                settingSelected === 'sett-theme-font'
+                  ? runSetting.arr_selected
+                  : 'Inter'
+              }`,
+              fontSize: 20,
+              fontLigatures: true,
+              minimap: {
+                enabled: false,
+              },
+            }}
             beforeMount={handleEditorDidMount}
             onMount={onMount}
             theme={runSetting.arr_selected}
