@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 
 type Props = {
   settingSelected: (setting: string) => void
@@ -33,7 +34,7 @@ const UserSettings = ({ settingSelected }: Props) => {
         id='back-home'
         className='pl-4 pr-6 py-1 text-sky-500 cursor-pointer hover:bg-[#1633656b]'
       >
-        <a href='/'>⇤ Back to Home</a>
+        <Link href='/'>⇤ Back to Home</Link>
       </li>
       {settings.map((setting) => (
         <li

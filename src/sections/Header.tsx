@@ -1,6 +1,7 @@
 import RrssLayout from '@/icons/RrssLayout'
 import Image from 'next/image'
 import user from '@/assets/imgs/user.webp'
+import Link from 'next/link'
 
 const Header = () => {
   return (
@@ -14,13 +15,15 @@ const Header = () => {
       </h1>
 
       <div className='justify-self-end'>
-        <Image
-          src={user}
-          alt='user'
-          width={160}
-          height={160}
-          className='size-[100px] rounded-full'
-        />
+        <Link scroll={true} href='/user/albertlnz'>
+          <Image
+            src={user}
+            alt='user'
+            width={160}
+            height={160}
+            className='size-[100px] rounded-full'
+          />
+        </Link>
       </div>
     </header>
   )
