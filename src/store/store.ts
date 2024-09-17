@@ -3,7 +3,7 @@ import { Language, LanguageStore } from '@/types'
 
 export const useLanguageStore = create<LanguageStore>((set) => ({
   language: {
-    name: 'JavaScript',
+    name: 'javascript',
     version: '18.15.0',
   },
   setTechs: (language: Language) => {

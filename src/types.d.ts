@@ -1,10 +1,10 @@
 type Languages =
-  | 'JavaScript'
-  | 'TypeScript'
-  | 'HTML'
-  | 'Java'
-  | 'Angular'
-  | 'PHP'
+  | 'javascript'
+  | 'typescript'
+  | 'html'
+  | 'java'
+  | 'angular' // not supported by 'monaco-editor'
+  | 'php'
 
 export interface Language {
   name: Languages
