@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Editor } from '@monaco-editor/react'
 import * as monaco from 'monaco-editor'
 import Output from './Output'
-import { useLanguageStore } from '@/store/store'
+import { useLanguageStore, useMonacoEditorStore } from '@/store/store'
 import { Exercise } from '@/types'
 
 type Props = {
@@ -13,12 +13,16 @@ type Props = {
 
 const CodeEditor = ({ classname }: Props) => {
   const languageStore = useLanguageStore((state) => state.language)
+  const { editorRef, setEditorRef, monacoEditorSettings } =
+    useMonacoEditorStore()
+
   const [exercises, setExercises] = useState<Exercise[]>([])
-  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null)
   const [questionNum, setQuestionNum] = useState<number>(0)
 
   const onMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
-    editorRef.current = editor
+    if (editorRef === null) {
+      setEditorRef(editor)
+    }
     editor.focus()
   }
 
@@ -62,31 +66,12 @@ const CodeEditor = ({ classname }: Props) => {
       <Editor
         className={`${classname} w-[100px]`}
         loading={'LOADING...'}
-        options={{
-          minimap: {
-            enabled: false,
-          },
-          acceptSuggestionOnEnter: 'off',
-          quickSuggestions: false,
-          suggestOnTriggerCharacters: false,
-          parameterHints: { enabled: false },
-          hover: { enabled: false },
-          codeLens: false,
-          links: false,
-          occurrencesHighlight: 'off',
-          renderValidationDecorations: 'off',
-          wordBasedSuggestions: 'off',
-          folding: false,
-          rulers: [],
-          renderLineHighlight: 'none',
-          matchBrackets: 'never',
-        }}
+        options={monacoEditorSettings.options}
         height='25vh'
-        theme='vs-dark'
+        theme={monacoEditorSettings.theme}
         language={languageStore.name}
         value={exercises[questionNum]?.question || ''}
         onMount={onMount}
-        // onChange={(value) => setValue(value)}
       />
       <Output
         editorRef={editorRef}
