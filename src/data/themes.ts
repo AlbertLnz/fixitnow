@@ -1,3 +1,7 @@
+import VS from '@/data/themes-json/vs.json'
+import VSDark from '@/data/themes-json/vs-dark.json'
+import HCBlack from '@/data/themes-json/hc-black.json'
+import HCLight from '@/data/themes-json/hc-light.json'
 import OneDarkPro from '@/data/themes-json/onedark-pro.json'
 
 type Theme = {
@@ -12,35 +16,43 @@ type Theme = {
 export const themes: Theme[] = [
   {
     name: 'vs',
-    value: 'vs-code',
+    value: 'vs',
     description: '',
     author: '',
     repo: '',
-    theme_json: {},
+    theme_json: {
+      ...VS,
+    },
   },
   {
     name: 'vs-dark',
-    value: '',
+    value: 'vs-dark',
     description: '',
     author: '',
     repo: '',
-    theme_json: {},
+    theme_json: {
+      ...VSDark,
+    },
   },
   {
     name: 'hc-black',
-    value: '',
+    value: 'hc-black',
     description: '',
     author: '',
     repo: '',
-    theme_json: {},
+    theme_json: {
+      ...HCBlack,
+    },
   },
   {
     name: 'hc-light',
-    value: '',
+    value: 'hc-light',
     description: '',
     author: '',
     repo: '',
-    theme_json: {},
+    theme_json: {
+      ...HCLight,
+    },
   },
   {
     name: 'OneDarkPro',

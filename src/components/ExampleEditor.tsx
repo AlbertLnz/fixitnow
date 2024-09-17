@@ -15,11 +15,9 @@ const ExampleEditor = () => {
   const [themeSelected, setThemeSelected] = useState(themeList[0])
 
   const handleEditorDidMount = (monacoInstance: typeof monaco) => {
-    // Example of 'OneDarkPro' theme
-    const theme_object = themes.find((theme) => theme.name === 'OneDarkPro')
-    monacoInstance.editor.defineTheme('OneDarkPro', {
-      base: 'vs-dark',
-      inherit: true,
+    const theme_object = themes.find((theme) => theme.name === themeSelected)
+
+    monacoInstance.editor.defineTheme(themeSelected, {
       ...theme_object?.theme_json,
     })
   }
@@ -55,13 +53,14 @@ const ExampleEditor = () => {
       <div className='bg-red-400 w-full flex-1 flex justify-between'>
         <div className='w-[85%] bg-green-400'>
           <Editor
+            key={themeSelected}
             className={`w-[100px]`}
             loading={'LOADING...'}
             height='25vh'
             language='javascript'
             beforeMount={handleEditorDidMount}
             onMount={onMount}
-            theme='OneDarkPro'
+            theme={themeSelected}
           />
         </div>
         <div className='w-[15%] flex flex-col space-y-4 items-center justify-center'>
