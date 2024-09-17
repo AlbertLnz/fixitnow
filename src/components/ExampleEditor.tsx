@@ -16,19 +16,17 @@ const ExampleEditor = ({ settingSelected }: Props) => {
   const [runSetting, setRunSetting] = useState<{
     arr: string[]
     arr_selected: string
-    palette: string[]
   }>({
     arr: [],
     arr_selected: '',
-    palette: [],
   })
 
   const handleEditorDidMount = (monacoInstance: typeof monaco) => {
+    if (!runSetting.arr_selected) return
+
     const theme_object = themes.find(
       (theme) => theme.name === runSetting.arr_selected
     )
-
-    if (runSetting.arr_selected === '') return
 
     monacoInstance.editor.defineTheme(runSetting.arr_selected, {
       ...theme_object?.theme_json,
@@ -71,7 +69,6 @@ const ExampleEditor = ({ settingSelected }: Props) => {
       setRunSetting({
         arr: themes.map((theme) => theme.name),
         arr_selected: themes[0].name,
-        palette: ['bg-orange-400', 'bg-green-500', 'bg-violet-600'],
       })
     }
   }, [settingSelected])
@@ -89,18 +86,24 @@ const ExampleEditor = ({ settingSelected }: Props) => {
             key={runSetting.arr_selected}
             className={`w-[100px]`}
             loading={'LOADING...'}
-            height='25vh'
             language='javascript'
             beforeMount={handleEditorDidMount}
             onMount={onMount}
             theme={runSetting.arr_selected}
-            defaultValue='console.log(Hello World!!)'
+            defaultValue='console.log("Hello World!!")'
           />
         </div>
         <div className='w-[15%] flex flex-col space-y-4 items-center justify-center'>
-          {runSetting.palette.map((color) => (
-            <div key={color} className={`size-14 rounded-lg ${color}`}></div>
-          ))}
+          {runSetting.arr_selected
+            ? themes
+                .find((theme) => theme.name === runSetting.arr_selected)
+                ?.palette.map((color) => (
+                  <div
+                    key={color}
+                    className={`size-14 rounded-lg ${color}`}
+                  ></div>
+                ))
+            : null}
         </div>
       </div>
     </div>
