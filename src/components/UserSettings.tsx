@@ -3,7 +3,11 @@
 import styles from '@/styles/Username.module.css'
 import { useState } from 'react'
 
-const UserSettings = () => {
+type Props = {
+  settingSelected: (setting: string) => void
+}
+
+const UserSettings = ({ settingSelected }: Props) => {
   const [activeSetting, setActiveSetting] = useState('')
 
   const settings = [
@@ -15,13 +19,18 @@ const UserSettings = () => {
     { id: 'sett-stats-pub', label: 'Make Stats public' },
   ]
 
+  const handleClick = (setting: string) => {
+    setActiveSetting(setting)
+    settingSelected(setting)
+  }
+
   return (
     <ul className={`space-y-6 ${styles.user_settings}`}>
       {settings.map((setting) => (
         <li
           key={setting.id}
           id={setting.id}
-          onClick={() => setActiveSetting(setting.id)}
+          onClick={() => handleClick(setting.id)}
           className={activeSetting === setting.id ? 'bg-green-800' : ''}
         >
           {setting.label}
