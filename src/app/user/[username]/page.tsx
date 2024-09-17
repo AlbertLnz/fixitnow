@@ -13,16 +13,17 @@ const Username = ({ params }: Props) => {
 
   return (
     <>
-      <main className='flex flex-col py-20 px-10'>
-        <h1 className='text-9xl flex justify-start'>
-          {params.username}&apos;s, settings
+      <main className='flex flex-col py-20 px-20 space-y-10'>
+        <h1 className='text-9xl flex justify-start items-end'>
+          {params.username}&apos;s&nbsp;
+          <span className='text-8xl self-end mb-1'>settings</span>
         </h1>
 
         <div className='grid grid-cols-10'>
-          <div className='col-span-4 text-4xl bg-fuchsia-800'>
+          <div className='col-span-4 text-4xl'>
             <UserSettings settingSelected={setSettingSelected} />
           </div>
-          <div className='col-span-6 bg-slate-800'>
+          <div className='col-span-6'>
             <ExampleEditor settingSelected={settingSelected} />
           </div>
         </div>

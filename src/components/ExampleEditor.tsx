@@ -18,8 +18,8 @@ const ExampleEditor = ({ settingSelected }: Props) => {
     arr: string[]
     arr_selected: string
   }>({
-    arr: [],
-    arr_selected: '',
+    arr: themes.map((theme) => theme.name),
+    arr_selected: themes[0].name,
   })
 
   const handleEditorDidMount = (monacoInstance: typeof monaco) => {
@@ -81,14 +81,24 @@ const ExampleEditor = ({ settingSelected }: Props) => {
   }, [settingSelected])
 
   return (
-    <div className='relative w-[80%] h-full bg-stone-800 flex flex-col items-center justify-center place-content-center mx-auto overflow-hidden'>
-      <div className='top-0 mt-2 flex justify-around w-full'>
-        <button onClick={prev}>Prev</button>
+    <div className='relative w-[80%] h-full bg-stone-900 flex flex-col items-center justify-center place-content-center mx-auto overflow-hidden py-6 pl-6'>
+      <div className='relative top-0 left-0 mb-4 flex justify-around items-center w-[85%] place-self-start'>
+        <button
+          onClick={prev}
+          className='absolute left-16 text-5xl transform scale-x-[-1] hover:text-green-800 transition-colors duration-500 ease-in-out'
+        >
+          ➭
+        </button>
         <h4 className='text-4xl'>{runSetting.arr_selected}</h4>
-        <button onClick={next}>Next</button>
+        <button
+          onClick={next}
+          className='absolute right-16 text-5xl hover:text-green-800 transition-colors duration-500 ease-in-out'
+        >
+          ➭
+        </button>
       </div>
-      <div className='bg-red-400 w-full flex-1 flex justify-between'>
-        <div className='w-[85%] bg-green-400'>
+      <div className='w-full flex-1 flex justify-between'>
+        <div className='w-[85%]'>
           <Editor
             key={runSetting.arr_selected}
             className={`w-[100px]`}
