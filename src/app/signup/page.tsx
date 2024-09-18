@@ -75,7 +75,7 @@ const SignUp = () => {
         form='signUpForm'
         className='h-full bg-[#010514] rounded-md px-4 mr-4'
       >
-        Sign In
+        Sign Up
       </button>
     </div>
   )

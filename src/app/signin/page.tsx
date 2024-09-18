@@ -55,7 +55,10 @@ const SignIn = () => {
 
         <div className='absolute -bottom-24 text-4xl ml-4'>
           <p>
-            Forgotten Password. <span className='text-[#F24822]'>Reset</span>
+            Forgotten Password.{' '}
+            <span className='text-[#F24822]'>
+              <Link href={'/forgot-password'}>Reset</Link>
+            </span>
           </p>
           <p>
             Don&apos;t have an account?{' '}
