@@ -2,7 +2,7 @@ import CodeEditor from '@/components/CodeEditor'
 import VerticalCarrouselLanguages from '@/components/VerticalCarrouselLanguages'
 import Header from '@/sections/Header'
 
-export default function Home() {
+const App = () => {
   return (
     <>
       <Header />
@@ -20,3 +20,5 @@ export default function Home() {
     </>
   )
 }
+
+export default App
