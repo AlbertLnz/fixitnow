@@ -1,0 +1,13 @@
+  <svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" fill="none" viewBox="0 0 124 124">
+    <style>
+      @font-face{
+        font-family:&quot;Jolly Lodger&quot;;src:url(https://cdn.jsdelivr.net/fontsource/fonts/jolly-lodger@latest/latin-400-normal.woff2)format(&quot;woff2&quot;),
+        url(https://cdn.jsdelivr.net/fontsource/fonts/jolly-lodger@latest/latin-400-normal.woff)
+        format(&quot;woff&quot;)
+      }
+    </style>
+    <rect width="124" height="124" fill="#292929" rx="100"/>
+    <text x="62" y="62" dominant-baseline="middle" style="fill:#f24822;font-family:Jolly Lodger,Arial,sans-serif;font-size:56px" text-anchor="middle">
+      &lt;FiN/&gt;
+    </text>
+  </svg>

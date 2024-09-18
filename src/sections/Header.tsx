@@ -15,7 +15,7 @@ const Header = () => {
       </h1>
 
       <div className='justify-self-end'>
-        <Link scroll={true} href='/user/albertlnz'>
+        <Link href='/user/albertlnz'>
           <Image
             src={user}
             alt='user'
