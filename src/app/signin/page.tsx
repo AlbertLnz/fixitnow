@@ -1,5 +1,6 @@
 import { GoogleIcon } from '@/icons/Google'
 import { GitHubIcon } from '@/icons/GitHub'
+import Link from 'next/link'
 
 const SignIn = () => {
   const signIn = async () => {
@@ -58,7 +59,9 @@ const SignIn = () => {
           </p>
           <p>
             Don&apos;t have an account?{' '}
-            <span className='text-[#2B813C]'>Sign Up</span>
+            <span className='text-[#2B813C]'>
+              <Link href={'/signup'}>Sign Up</Link>
+            </span>
           </p>
         </div>
       </form>

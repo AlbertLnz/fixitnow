@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const SignUp = () => {
   const signUp = async () => {
     'use server'
@@ -62,7 +64,9 @@ const SignUp = () => {
         <div className='absolute -bottom-16 text-4xl ml-4'>
           <p>
             Already have an account?{' '}
-            <span className='text-[#2B813C]'>Sign In</span>
+            <span className='text-[#2B813C]'>
+              <Link href={'/signin'}>Sign In</Link>
+            </span>
           </p>
         </div>
       </form>
