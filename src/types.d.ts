@@ -1,3 +1,11 @@
+export interface UserRegister {
+  email?: string
+  email_verified?: boolean
+  password?: string
+  phone_verified?: boolean
+  sub?: string
+}
+
 type Languages =
   | 'javascript'
   | 'typescript'

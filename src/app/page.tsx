@@ -1,8 +1,7 @@
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import { cookies } from 'next/headers'
+import { createSupabaseServerClient } from '@/utils/supabase/server'
 
 const HomePage = async () => {
-  const supabase = createServerComponentClient({ cookies })
+  const supabase = createSupabaseServerClient()
   const { data: user } = await supabase.from('users').select('*').eq('id', 1)
 
   return (
