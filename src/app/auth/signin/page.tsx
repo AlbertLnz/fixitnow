@@ -39,6 +39,17 @@ const SignIn = () => {
     })
   }
 
+  const signInWithGoogle = async () => {
+    const supabase = createSupabaseClientClient()
+
+    await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: 'http://localhost:3000/api/auth/callback/google',
+      },
+    })
+  }
+
   return (
     <div className='grid grid-cols-[85%_15%] max-w-4xl mx-auto h-full text-3xl items-center place-content-center'>
       <section id='rrss-login' className='grid grid-cols-2 gap-x-2 mb-4 px-4'>
@@ -49,7 +60,10 @@ const SignIn = () => {
           <GitHubIcon className='size-10' />
           <p>GitHub</p>
         </button>
-        <button className='flex items-center justify-center p-4 bg-black gap-x-4 rounded-md hover:cursor-pointer hover:bg-[#000000a0]'>
+        <button
+          onClick={signInWithGoogle}
+          className='flex items-center justify-center p-4 bg-black gap-x-4 rounded-md hover:cursor-pointer hover:bg-[#000000a0]'
+        >
           <GoogleIcon className='size-10' />
           <p>Google</p>
         </button>
