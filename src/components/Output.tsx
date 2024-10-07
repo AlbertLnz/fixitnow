@@ -16,7 +16,7 @@ const Output = ({ editorRef, language, exercises, questionNum }: Props) => {
 
   const runCode = async () => {
     if (editorRef) {
-      const sourceCode = editorRef.current?.getValue()
+      const sourceCode = editorRef?.getValue()
       if (!sourceCode) return
 
       try {
@@ -37,10 +37,10 @@ const Output = ({ editorRef, language, exercises, questionNum }: Props) => {
   }
 
   return (
-    <div className='relative w-full'>
+    <section className='relative w-full'>
       <button
         onClick={runCode}
-        className='absolute bottom-0 left-0 bg-green-600 p-4 uppercase text-2xl'
+        className='absolute top-0 left-0 -translate-y-full -translate-x-1/2 bg-green-600 p-2.5 uppercase text-xl rounded-t-full'
       >
         run!
       </button>
@@ -53,7 +53,7 @@ const Output = ({ editorRef, language, exercises, questionNum }: Props) => {
             ))
           : ''}
       </div>
-    </div>
+    </section>
   )
 }
 

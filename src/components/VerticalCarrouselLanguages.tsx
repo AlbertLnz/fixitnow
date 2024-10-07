@@ -22,40 +22,40 @@ const VerticalCarrouselLanguages = () => {
   }, [curr, changeLanguage])
 
   return (
-    <div className='relative'>
-      <div className='overflow-hidden w-fit h-[calc(9rem+1rem)]'>
-        <div
-          className='flex flex-col gap-y-4 transition-transform ease-out duration-500 w-fit'
-          style={{ transform: `translateY(-${curr * (9 + 1)}rem)` }}
-        >
-          {icons.map(({ name, component: Icon }) => (
-            <div
-              key={name}
-              className='flex-shrink-0 flex items-center justify-center'
-            >
-              <Icon className='w-36 h-36' />
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Button Up */}
-      <div className='absolute flex flex-col -top-10 w-36 items-center justify-center z-20'>
+    <div className='flex justify-center items-center gap-x-6'>
+      <div className='flex items-center justify-center z-20'>
         <button
           onClick={prev}
-          className='p-2 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white'
+          className='p-1 text-xs rounded-full shadow bg-white/80 text-gray-800 hover:bg-white'
           aria-label='Previous Slide'
         >
-          Up
+          Left
         </button>
       </div>
-      {/* Button Down */}
-      <div className='absolute flex flex-col top-36 w-36 items-center justify-center z-20'>
+      <div className='w-fit h-[calc(2rem)] overflow-x-hidden'>
+        <div className='h-fit w-[calc(2rem)]'>
+          <div
+            className='flex flex-row gap-x-4 transition-transform ease-out duration-500 h-fit'
+            style={{ transform: `translateX(-${curr * (2 + 1)}rem)` }}
+          >
+            {icons.map(({ name, component: Icon }) => (
+              <div
+                key={name}
+                className='flex-shrink-0 flex items-center justify-center'
+              >
+                <Icon className='w-8 h-8' />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className='flex items-center justify-center z-20'>
         <button
           onClick={next}
-          className='p-2 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white'
+          className='p-1 text-xs rounded-full shadow bg-white/80 text-gray-800 hover:bg-white'
           aria-label='Next Slide'
         >
-          Down
+          Right
         </button>
       </div>
     </div>

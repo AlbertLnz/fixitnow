@@ -10,7 +10,7 @@ const Header = () => {
         <RrssLayout />
       </div>
 
-      <h1 className='text-9xl text-center custom-wavy-underline'>
+      <h1 className='text-6xl text-center custom-wavy-underline'>
         {'<FixItNow />'}
       </h1>
 
@@ -19,8 +19,8 @@ const Header = () => {
           <Image
             src={user}
             alt='user'
-            width={160}
-            height={160}
+            width={120}
+            height={120}
             className='size-[100px] rounded-full'
           />
         </Link>
