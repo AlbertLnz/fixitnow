@@ -180,7 +180,7 @@ const SignUp = () => {
           <p>
             Already have an account?{' '}
             <span className='text-[#2B813C]'>
-              <Link href={'/signin'}>Sign In</Link>
+              <Link href={'/auth/signin'}>Sign In</Link>
             </span>
           </p>
         </div>
@@ -188,7 +188,7 @@ const SignUp = () => {
       <button
         type='submit'
         form='signUpForm'
-        className='h-full bg-[#0b1a52] rounded-md px-4 mr-4'
+        className='h-full bg-[#010514] hover:bg-[#0b1a52] rounded-md px-4 mr-4 transition-colors duration-100 ease-linear'
       >
         Sign Up
       </button>
