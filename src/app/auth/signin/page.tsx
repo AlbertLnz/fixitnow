@@ -28,17 +28,31 @@ const SignIn = () => {
     }
   }
 
+  const signInWithGitHub = async () => {
+    const supabase = createSupabaseClientClient()
+
+    await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        redirectTo: 'http://localhost:3000/api/auth/callback/github',
+      },
+    })
+  }
+
   return (
     <div className='grid grid-cols-[85%_15%] max-w-4xl mx-auto h-full text-3xl items-center place-content-center'>
       <section id='rrss-login' className='grid grid-cols-2 gap-x-2 mb-4 px-4'>
-        <article className='flex items-center justify-center p-4 bg-black gap-x-4 rounded-md hover:cursor-pointer hover:bg-[#000000a0]'>
+        <button
+          onClick={signInWithGitHub}
+          className='flex items-center justify-center p-4 bg-black gap-x-4 rounded-md hover:cursor-pointer hover:bg-[#000000a0]'
+        >
           <GitHubIcon className='size-10' />
           <p>GitHub</p>
-        </article>
-        <article className='flex items-center justify-center p-4 bg-black gap-x-4 rounded-md hover:cursor-pointer hover:bg-[#000000a0]'>
+        </button>
+        <button className='flex items-center justify-center p-4 bg-black gap-x-4 rounded-md hover:cursor-pointer hover:bg-[#000000a0]'>
           <GoogleIcon className='size-10' />
           <p>Google</p>
-        </article>
+        </button>
       </section>
 
       <div />
