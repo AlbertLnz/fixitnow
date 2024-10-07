@@ -6,6 +6,13 @@ export interface UserRegister {
   sub?: string
 }
 
+export interface FormObject {
+  email: boolean | undefined
+  username: boolean | undefined
+  password: boolean | undefined
+  confirmPassword: boolean | undefined
+}
+
 type Languages =
   | 'javascript'
   | 'typescript'
