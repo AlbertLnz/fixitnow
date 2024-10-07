@@ -56,7 +56,7 @@ const SignUp = () => {
     }
   }
 
-  const signUp = async (evt: React.FormEvent<HTMLFormElement>) => {
+  const signUpWithEmail = async (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
 
     await validateForm(evt)
@@ -96,7 +96,7 @@ const SignUp = () => {
       <form
         id='signUpForm'
         className='relative flex flex-col w-full justify-center gap-y-4 px-4'
-        onSubmit={signUp}
+        onSubmit={signUpWithEmail}
       >
         <div className='flex items-center bg-[#292929] rounded-md py-4 px-10 gap-x-4'>
           <label className='' htmlFor='email'>

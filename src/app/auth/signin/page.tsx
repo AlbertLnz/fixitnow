@@ -1,12 +1,31 @@
+'use client'
+
 import { GoogleIcon } from '@/icons/Google'
 import { GitHubIcon } from '@/icons/GitHub'
 import Link from 'next/link'
+import { createSupabaseClientClient } from '@/utils/supabase/client'
 
 const SignIn = () => {
-  const signIn = async () => {
-    'use server'
+  const signInWithEmail = async (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault()
 
-    console.log('signIn Supabase function')
+    const supabase = createSupabaseClientClient()
+
+    const form = evt.currentTarget
+    const formData = new FormData(form)
+    const email = formData.get('email') as string
+    const password = formData.get('password') as string
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password,
+    })
+
+    if (error) {
+      console.log(error.message)
+    } else {
+      console.log('User logged in:', data)
+    }
   }
 
   return (
@@ -27,7 +46,7 @@ const SignIn = () => {
       <form
         id='signInForm'
         className='relative flex flex-col w-full justify-center gap-y-4 px-4'
-        action={signIn}
+        onSubmit={signInWithEmail}
       >
         <div className='flex items-center bg-[#292929] rounded-md py-4 px-10 gap-x-4'>
           <label className='' htmlFor='email'>
