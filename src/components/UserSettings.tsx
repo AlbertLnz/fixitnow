@@ -67,7 +67,7 @@ const UserSettings = ({ settingSelected }: Props) => {
         id='back-home'
         className='pl-4 pr-6 py-1 text-sky-500 rounded-md cursor-pointer hover:bg-[#1633656b]'
       >
-        <Link href='/'>⇤ Back to Home</Link>
+        <Link href='/app'>⇤ Back to Home</Link>
       </li>
       {settings.map((setting) => (
         <li
